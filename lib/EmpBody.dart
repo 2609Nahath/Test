@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 import 'fonts/fonts.dart';
@@ -31,11 +29,30 @@ class _EmpBodyState extends State<EmpBody> {
                 padding: EdgeInsets.fromLTRB(100, 25, 80, 25)
               ),
               child: Text("Tasks",style: Fonts.google_fonts,),
-              onPressed: () =>{}
+              onPressed: () =>{
+                showBody(context)
+              }
             ),
           ],),
         ],
       )
     );
+  }
+  
+  showBody(BuildContext context) {
+    Scaffold mainBody = const Scaffold(
+      backgroundColor: Colors.white,
+      body: Column(
+        children: [
+          Row(
+            children: [
+              Text("Project title:"),
+              Text("Description:")
+            ],
+          )
+        ],
+      ),
+    );
+    return mainBody;
   }
 }
