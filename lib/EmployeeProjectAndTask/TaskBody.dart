@@ -1,30 +1,64 @@
+import 'package:emp_management_system/EmployeeProjectAndTask/AddTask.dart';
 import 'package:flutter/material.dart';
+import 'package:emp_management_system/Colors_Fonts/fonts/fonts.dart';
+import 'package:emp_management_system/EmployeeProjectAndTask/ProjectListItems.dart';
 
-import '../Colors_Fonts/fonts/fonts.dart';
+class TaskBody {
+  var arr = ['Task 1', 'Task 2', 'Task 3', 'Task 4'];
+  AddTask addTask = AddTask();
 
-class TaskBody{
-  Widget buildTaskBody() {
-    return const Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+  Widget buildTaskBody(BuildContext context) {
+    return Scaffold(
+      body: Column(
         children: [
+          Container(
+            padding: const EdgeInsets.all(20),
+            child: Text("On Going", style: Fonts.bodyFonts),
+          ),
           SizedBox(
-            height: 20,
+            height: 220,
+            child: ListView.builder(
+              itemCount: arr.length,
+              itemBuilder: (context, position) {
+                return ExpandableListItem(
+                  title: arr[position],
+                );
+              },
+            ),
           ),
-          Text(
-            'Welcome to EmpBody!',
-            style: TextStyle(fontSize: 24),
+          Container(
+            padding: const EdgeInsets.all(20),
+            child: Text("Completed", style: Fonts.bodyFonts),
           ),
-          SizedBox(height: 16),
-          Text(
-            'Your main body content goes here.',
-            style: TextStyle(fontSize: 18),
+          SizedBox(
+            height: 220,
+            child: ListView.builder(
+              itemCount: arr.length,
+              itemBuilder: (context, position) {
+                return ExpandableListItem(
+                  title: arr[position],
+                );
+              },
+            ),
           ),
+          const SizedBox(
+            height: 120,
+          ),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: FloatingActionButton(
+                backgroundColor: const Color.fromARGB(255, 1, 189, 178),
+                onPressed: () => {
+                  addTask.showTaskBody(context)
+                },
+                child: const Icon(Icons.add)
+              ),
+            ),
+          )
         ],
       ),
     );
   }
 }
-
-
-

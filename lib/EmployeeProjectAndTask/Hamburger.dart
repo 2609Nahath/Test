@@ -9,16 +9,22 @@ class HamburgerButton {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          DrawerHeader(
+          SizedBox(
+            height: 200,
+            child: DrawerHeader(
             decoration: const BoxDecoration(
               color: Color.fromARGB(255, 1, 189, 178),
             ),
-            child: Text(
-              'Drawer Header', style: Fonts.google_fonts),
+            child: Align(
+              alignment: Alignment.center,
+              child:  Text(
+              'Dashboard', style: Fonts.google_fonts),
+            )
+          ),
           ),
           ListTile(
             title: Text(
-              'Item 1', style: Fonts.bodyFonts),
+              'Settings', style: Fonts.bodyFonts),
             onTap: () {
               // Update the state of the app.
               // ...
@@ -26,11 +32,18 @@ class HamburgerButton {
           ),
           ListTile(
             title: Text(
-              'Item 2', style: Fonts.bodyFonts,),
+              'FAQ', style: Fonts.bodyFonts,),
             onTap: () {
               // ...
             },
           ),
+          ListTile(
+            title: Text(
+              'Log Out', style: Fonts.bodyFonts,),
+            onTap: () {
+              // ...
+            },
+          )
         ],
       ),
     );

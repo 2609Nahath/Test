@@ -1,64 +1,43 @@
 import 'package:flutter/material.dart';
 import '../Colors_Fonts/fonts/fonts.dart';
+import 'ProjectListItems.dart';
 
 class ProjectBody {
-  bool _showProjectBody = true;
-  bool _showTaskBody = false;
-  
+  var arr = ['Project 1', 'Project 2', 'Project 3', 'Project 4'];
+
   Widget buildProjectBody() {
-    Color enableColor = Color.fromARGB(0, 0, 0, 0);
-    Color disableColor = Color.fromARGB(0, 0, 0, 0);
-    return Align(
-      alignment: Alignment.topLeft,
-      child: Padding(
-        padding: EdgeInsets.fromLTRB(20, 30, 20, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextButton(
-              onPressed: () => {},
-              style: TextButton.styleFrom(
-                 padding: const EdgeInsets.fromLTRB(10, 15, 355, 15),
-                backgroundColor: _showProjectBody ? enableColor : disableColor,
-              ),
-              child: Text(
-                "Project Title:", style: Fonts.bodyFonts
-              ),
+    return Scaffold(
+      body: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(20),
+            child: Text("On Going", style: Fonts.bodyFonts),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: arr.length,
+              itemBuilder: (context, position) {
+                return ExpandableListItem(
+                  title: arr[position],
+                );
+              },
             ),
-            TextButton(
-              onPressed: () => {},
-              style: TextButton.styleFrom(
-                 padding: const EdgeInsets.fromLTRB(10, 15, 355, 15),
-                backgroundColor: _showProjectBody ? enableColor : disableColor,
-              ),
-              child:Text("Description:", style: Fonts.bodyFonts),
+          ),
+          Container(
+            padding: const EdgeInsets.all(20),
+            child: Text("Completed", style: Fonts.bodyFonts),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: arr.length,
+              itemBuilder: (context, position) {
+                return ExpandableListItem(
+                  title: arr[position],
+                );
+              },
             ),
-            TextButton(
-              onPressed: () => {},
-              style: TextButton.styleFrom(
-                 padding: const EdgeInsets.fromLTRB(10, 15, 355, 15),
-                backgroundColor: _showProjectBody ? enableColor : disableColor,
-              ),
-              child: Text("Start Date:", style: Fonts.bodyFonts),
-            ),
-            TextButton(
-              onPressed: () => {},
-              style: TextButton.styleFrom(
-                 padding: const EdgeInsets.fromLTRB(10, 15, 355, 15),
-                backgroundColor: _showProjectBody ? enableColor : disableColor,
-              ),
-              child: Text("End Date:", style: Fonts.bodyFonts),
-            ),
-            TextButton(
-              onPressed: () => {},
-              style: TextButton.styleFrom(
-                 padding: const EdgeInsets.fromLTRB(10, 15, 325, 15),
-                backgroundColor: _showProjectBody ? enableColor : disableColor,
-              ),
-              child: Text("Team Members:", style: Fonts.bodyFonts),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -18,43 +18,93 @@ class _ProjectTaskState extends State<ProjectTask> {
 
   @override
   Widget build(BuildContext context) {
-    Color enableColor = Color.fromARGB(255, 231, 231, 231); 
+    Color enableColor = const Color.fromRGBO(1, 189, 178, .2);
     Color disableColor = const Color.fromARGB(255, 255, 255, 255); 
 
     return Scaffold(
-      body: Column(
+  body: Column(
+    children: [
+      const SizedBox(
+        height: 0
+      ),
+      Row(
         children: [
-          Row(
-            children: [
-              TextButton(
+          Expanded(
+            flex: 2,
+            child: Container(
+              alignment: Alignment.center,
+              width: 50,
+              child: TextButton(
                 onPressed: () => _toggleBody(true, false),
+                child: Text("Projects", style: Fonts.google_fonts,),
                 style: TextButton.styleFrom(
-                  padding: EdgeInsets.fromLTRB(105, 25, 75, 25),
+                  padding: EdgeInsets.fromLTRB(83, 25, 83, 25),
                   backgroundColor: _showProjectBody ? enableColor : disableColor,
                 ),
-                child: Text("Projects", style: Fonts.google_fonts),
               ),
-              TextButton(
+            ),
+          ),
+          Expanded(
+            flex: 2,
+            child: Container(
+              alignment: Alignment.center,
+              width: 50,
+              child: TextButton(
                 onPressed: () => _toggleBody(false, true),
+                child: Text("Tasks", style: Fonts.google_fonts,),
                 style: TextButton.styleFrom(
-                  padding: EdgeInsets.fromLTRB(100, 25, 80, 25),
-                  backgroundColor: _showTaskBody ? enableColor : disableColor,
+                  padding: EdgeInsets.fromLTRB(97, 25, 97, 25),
+                  backgroundColor: _showProjectBody ? disableColor : enableColor,
                 ),
-                child: Text("Tasks", style: Fonts.google_fonts),
               ),
-            ],
+            ),
           ),
-          const Divider(
-            height: 0,
-            color: Colors.black,
-            thickness: 1,
-            indent: 0,
-            endIndent: 0,
-          ),
-          _showProjectBody ? projectBody.buildProjectBody() : taskBody.buildTaskBody(),
         ],
       ),
-    );
+
+      // Body
+      Expanded(
+        child: _showProjectBody ? projectBody.buildProjectBody() : taskBody.buildTaskBody(context),
+      ),
+    ],
+  ),
+);
+
+    
+    // return Scaffold(
+    //   body: Column(
+    //     children: [
+    //       Row(
+    //         children: [
+    //           TextButton(
+    //             onPressed: () => _toggleBody(true, false),
+    //             style: TextButton.styleFrom(
+    //               padding: EdgeInsets.fromLTRB(105, 25, 75, 25),
+    //               backgroundColor: _showProjectBody ? enableColor : disableColor,
+    //             ),
+    //             child: Text("Projects", style: Fonts.google_fonts),
+    //           ),
+    //           TextButton(
+    //             onPressed: () => _toggleBody(false, true),
+    //             style: TextButton.styleFrom(
+    //               padding: EdgeInsets.fromLTRB(100, 25, 80, 25),
+    //               backgroundColor: _showTaskBody ? enableColor : disableColor,
+    //             ),
+    //             child: Text("Tasks", style: Fonts.google_fonts),
+    //           ),
+    //         ],
+    //       ),
+    //       const Divider(
+    //         height: 0,
+    //         color: Colors.black,
+    //         thickness: 1,
+    //         indent: 0,
+    //         endIndent: 0,
+    //       ),
+    //       _showProjectBody ? projectBody.buildProjectBody() : taskBody.buildTaskBody(),
+    //     ],
+    //   ),
+    // );
   }
 
   void _toggleBody(bool showProjectBody, bool showTaskBody) {
