@@ -7,6 +7,7 @@ class Fonts extends StatefulWidget {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
+  // ignore: non_constant_identifier_names
   static TextStyle google_fonts = 
       GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.w400, color: Colors.black);
 
@@ -22,6 +23,9 @@ class Fonts extends StatefulWidget {
   static TextStyle hintFonts = 
     GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400, color: Colors.grey);
 
+  static TextStyle headFonts = 
+    GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.black);
+
   @override
   State<Fonts> createState() => _FontsState();
 }
@@ -32,3 +36,14 @@ class _FontsState extends State<Fonts> {
     return const Placeholder();
   }
 }
+// shadows: <Shadow>[
+//       Shadow(
+//         offset: Offset(10.0, 10.0),
+//         blurRadius: 3.0,
+//         color: Color.fromARGB(255, 0, 0, 0),
+//       ),
+//       Shadow(
+//         offset: Offset(10.0, 10.0),
+//         blurRadius: 8.0,
+//         color: Color.fromARGB(125, 0, 0, 255),
+//       ),

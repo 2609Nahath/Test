@@ -26,7 +26,7 @@ class _InProcessItemsState extends State<InProcessItems> {
       child: SizedBox( 
         height: 150,
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(20.0),
+          borderRadius: BorderRadius.circular(25.0),
           child: Card(
             child: Scaffold(
               backgroundColor: widget.descriptionColor,

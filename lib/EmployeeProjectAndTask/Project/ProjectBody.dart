@@ -1,4 +1,4 @@
-import 'package:emp_management_system/EmployeeProjectAndTask/Project/AllProjects.dart';
+import 'package:emp_management_system/EmployeeProjectAndTask/Project/ViewInProgressProjects.dart';
 import 'package:emp_management_system/EmployeeProjectAndTask/Project/CompletedItems.dart';
 import 'package:flutter/material.dart';
 import '../../Colors_Fonts/fonts/fonts.dart';
@@ -8,10 +8,10 @@ import 'dart:math'; // Added import for dart:math
 class ProjectBody {
   var inProgressProjectArr = ['Employee Management System', 'LMS', 'ERP System', 'Project 4', 'Project 5', 'Project 6'];
   var completedProjectArr = ['Project 1', 'Project 2', 'Project 3', 'Project 4', 'Project 5', 'Project 6'];
-  var dueDateArray = ['19/02/2024','15/04/2024','08/05/2024'];
+  var dueDateArray = ['19/02/2024','15/04/2024','08/05/2024','08/05/2024','08/05/2024','08/05/2024'];
   var completedDate = ['01/02/2022','05/11/2023','23/12/2023'];
 
-  static Color tileColors = Color.fromRGBO(218, 217, 217, 0.408);
+  static Color tileColors = const Color.fromRGBO(218, 217, 217, 0.408);
 
   static List<Color> descriptionBgColor = [
     const Color.fromRGBO(1, 189, 178, .2),
@@ -37,7 +37,10 @@ class ProjectBody {
                   padding: const EdgeInsets.all(20),
                   child: TextButton(
                     onPressed: () {
-                      
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ViewInProgressProjects(inProgressProjectArr))
+                      );
                     },
                     style: ButtonStyle(
                       overlayColor: MaterialStateProperty.resolveWith<Color>(
@@ -91,10 +94,10 @@ class ProjectBody {
                   padding: const EdgeInsets.all(20),
                   child: TextButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const AllProjects())
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) => const ViewInProgressProjects())
+                      // );
                     },
                     style: ButtonStyle(
                       overlayColor: MaterialStateProperty.resolveWith<Color>(
@@ -135,8 +138,7 @@ class ProjectBody {
                   descriptionColor: descriptionBgColor[position % descriptionBgColor.length],
                 );
               },
-            ),
-            
+            ), 
           ],
         ),
       ),
