@@ -1,7 +1,7 @@
+import 'package:emp_management_system/EmployeeProjectAndTask/Project/AllProjects.dart';
 import 'package:emp_management_system/EmployeeProjectAndTask/Project/CompletedItems.dart';
 import 'package:flutter/material.dart';
 import '../../Colors_Fonts/fonts/fonts.dart';
-import '../Task/AddTask.dart';
 import 'InProressItems.dart';
 import 'dart:math'; // Added import for dart:math
 
@@ -21,8 +21,6 @@ class ProjectBody {
 
   Widget buildProjectBody(BuildContext context) {
     final int itemCount = min(inProgressProjectArr.length, 3);
-    AddTask addTask = AddTask();
-
     return Scaffold(
       body: Scrollbar(
         child: ListView(
@@ -93,7 +91,10 @@ class ProjectBody {
                   padding: const EdgeInsets.all(20),
                   child: TextButton(
                     onPressed: () {
-                      
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const AllProjects())
+                      );
                     },
                     style: ButtonStyle(
                       overlayColor: MaterialStateProperty.resolveWith<Color>(
