@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../Colors_Fonts/fonts/fonts.dart';
-import 'ProjectBody.dart';
-import 'TaskBody.dart';
+import 'Project/ProjectBody.dart';
+import 'Task/TaskBody.dart';
 
 class ProjectTask extends StatefulWidget {
   const ProjectTask({Key? key}) : super(key: key);
@@ -14,6 +14,7 @@ class _ProjectTaskState extends State<ProjectTask> {
   ProjectBody projectBody = ProjectBody();
   TaskBody taskBody = TaskBody();
   bool _showProjectBody = true;
+  // ignore: unused_field
   bool _showTaskBody = false;
 
   @override
@@ -22,89 +23,53 @@ class _ProjectTaskState extends State<ProjectTask> {
     Color disableColor = const Color.fromARGB(255, 255, 255, 255); 
 
     return Scaffold(
-  body: Column(
-    children: [
-      const SizedBox(
-        height: 0
-      ),
-      Row(
+      body: Column(
         children: [
-          Expanded(
-            flex: 2,
-            child: Container(
-              alignment: Alignment.center,
-              width: 50,
-              child: TextButton(
-                onPressed: () => _toggleBody(true, false),
-                child: Text("Projects", style: Fonts.google_fonts,),
-                style: TextButton.styleFrom(
-                  padding: EdgeInsets.fromLTRB(83, 25, 83, 25),
-                  backgroundColor: _showProjectBody ? enableColor : disableColor,
-                ),
-              ),
-            ),
+          const SizedBox(
+            height: 0
           ),
-          Expanded(
-            flex: 2,
-            child: Container(
-              alignment: Alignment.center,
-              width: 50,
-              child: TextButton(
-                onPressed: () => _toggleBody(false, true),
-                child: Text("Tasks", style: Fonts.google_fonts,),
-                style: TextButton.styleFrom(
-                  padding: EdgeInsets.fromLTRB(97, 25, 97, 25),
-                  backgroundColor: _showProjectBody ? disableColor : enableColor,
+          Row(
+            children: [
+              Expanded(
+                flex: 2,
+                child: Container(
+                  alignment: Alignment.center,
+                  width: 50,
+                  child: TextButton(
+                    onPressed: () => _toggleBody(true, false),
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.fromLTRB(83, 25, 83, 25),
+                      backgroundColor: _showProjectBody ? enableColor : disableColor,
+                    ),
+                    child: Text("Projects", style: Fonts.google_fonts,),
+                  ),
                 ),
               ),
-            ),
+              Expanded(
+                flex: 2,
+                child: Container(
+                  alignment: Alignment.center,
+                  width: 50,
+                  child: TextButton(
+                    onPressed: () => _toggleBody(false, true),
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.fromLTRB(97, 25, 97, 25),
+                      backgroundColor: _showProjectBody ? disableColor : enableColor,
+                    ),
+                    child: Text("Tasks", style: Fonts.google_fonts,),
+                  ),
+                ),
+              ),
+            ],
+          ),
+
+          // Body
+          Expanded(
+            child: _showProjectBody ? projectBody.buildProjectBody(context) : taskBody.buildTaskBody(context),
           ),
         ],
       ),
-
-      // Body
-      Expanded(
-        child: _showProjectBody ? projectBody.buildProjectBody() : taskBody.buildTaskBody(context),
-      ),
-    ],
-  ),
-);
-
-    
-    // return Scaffold(
-    //   body: Column(
-    //     children: [
-    //       Row(
-    //         children: [
-    //           TextButton(
-    //             onPressed: () => _toggleBody(true, false),
-    //             style: TextButton.styleFrom(
-    //               padding: EdgeInsets.fromLTRB(105, 25, 75, 25),
-    //               backgroundColor: _showProjectBody ? enableColor : disableColor,
-    //             ),
-    //             child: Text("Projects", style: Fonts.google_fonts),
-    //           ),
-    //           TextButton(
-    //             onPressed: () => _toggleBody(false, true),
-    //             style: TextButton.styleFrom(
-    //               padding: EdgeInsets.fromLTRB(100, 25, 80, 25),
-    //               backgroundColor: _showTaskBody ? enableColor : disableColor,
-    //             ),
-    //             child: Text("Tasks", style: Fonts.google_fonts),
-    //           ),
-    //         ],
-    //       ),
-    //       const Divider(
-    //         height: 0,
-    //         color: Colors.black,
-    //         thickness: 1,
-    //         indent: 0,
-    //         endIndent: 0,
-    //       ),
-    //       _showProjectBody ? projectBody.buildProjectBody() : taskBody.buildTaskBody(),
-    //     ],
-    //   ),
-    // );
+    );
   }
 
   void _toggleBody(bool showProjectBody, bool showTaskBody) {

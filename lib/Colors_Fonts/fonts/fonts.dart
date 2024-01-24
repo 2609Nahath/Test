@@ -13,6 +13,15 @@ class Fonts extends StatefulWidget {
   static TextStyle bodyFonts = 
     GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400, color: Colors.black);
 
+  static TextStyle boldFonts = 
+    GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.black);
+
+  static TextStyle smallFonts = 
+    GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black);
+
+  static TextStyle hintFonts = 
+    GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400, color: Colors.grey);
+
   @override
   State<Fonts> createState() => _FontsState();
 }
