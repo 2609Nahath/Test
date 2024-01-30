@@ -20,14 +20,12 @@ class _ProjectTaskState extends State<ProjectTask> {
   @override
   Widget build(BuildContext context) {
     Color enableColor = const Color.fromRGBO(1, 189, 178, .2);
-    Color disableColor = const Color.fromARGB(255, 255, 255, 255); 
+    Color disableColor = const Color.fromARGB(255, 255, 255, 255);
 
     return Scaffold(
       body: Column(
         children: [
-          const SizedBox(
-            height: 0
-          ),
+          const SizedBox(height: 0),
           Row(
             children: [
               Expanded(
@@ -39,9 +37,13 @@ class _ProjectTaskState extends State<ProjectTask> {
                     onPressed: () => _toggleBody(true, false),
                     style: TextButton.styleFrom(
                       padding: const EdgeInsets.fromLTRB(83, 25, 83, 25),
-                      backgroundColor: _showProjectBody ? enableColor : disableColor,
+                      backgroundColor:
+                          _showProjectBody ? enableColor : disableColor,
                     ),
-                    child: Text("Projects", style: Fonts.google_fonts,),
+                    child: Text(
+                      "Projects",
+                      style: Fonts.google_fonts,
+                    ),
                   ),
                 ),
               ),
@@ -53,10 +55,14 @@ class _ProjectTaskState extends State<ProjectTask> {
                   child: TextButton(
                     onPressed: () => _toggleBody(false, true),
                     style: TextButton.styleFrom(
-                      padding: const EdgeInsets.fromLTRB(97, 25, 97, 25),
-                      backgroundColor: _showProjectBody ? disableColor : enableColor,
+                      padding: const EdgeInsets.fromLTRB(95, 25, 97, 25),
+                      backgroundColor:
+                          _showProjectBody ? disableColor : enableColor,
                     ),
-                    child: Text("Tasks", style: Fonts.google_fonts,),
+                    child: Text(
+                      "Tasks",
+                      style: Fonts.google_fonts,
+                    ),
                   ),
                 ),
               ),
@@ -65,7 +71,9 @@ class _ProjectTaskState extends State<ProjectTask> {
 
           // Body
           Expanded(
-            child: _showProjectBody ? projectBody.buildProjectBody(context) : taskBody.buildTaskBody(context),
+            child: _showProjectBody
+                ? projectBody.buildProjectBody(context)
+                : taskBody.buildTaskBody(context),
           ),
         ],
       ),
