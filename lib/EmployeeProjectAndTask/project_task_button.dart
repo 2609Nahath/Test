@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../Colors_Fonts/fonts/fonts.dart';
-import 'Project/ProjectBody.dart';
-import 'Task/TaskBody.dart';
+import '../Colors_Fonts/Fonts/font.dart';
+import 'Project/project_body.dart';
+import 'Task/task_body.dart';
 
 class ProjectTask extends StatefulWidget {
   const ProjectTask({Key? key}) : super(key: key);
@@ -14,12 +14,10 @@ class _ProjectTaskState extends State<ProjectTask> {
   ProjectBody projectBody = ProjectBody();
   TaskBody taskBody = TaskBody();
   bool _showProjectBody = true;
-  // ignore: unused_field
-  bool _showTaskBody = false;
 
   @override
   Widget build(BuildContext context) {
-    Color enableColor = const Color.fromRGBO(1, 189, 178, .2);
+    Color enableColor = Color.fromARGB(255, 1, 189, 178);
     Color disableColor = const Color.fromARGB(255, 255, 255, 255);
 
     return Scaffold(
@@ -27,18 +25,18 @@ class _ProjectTaskState extends State<ProjectTask> {
         children: [
           const SizedBox(height: 0),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Expanded(
-                flex: 2,
                 child: Container(
-                  alignment: Alignment.center,
-                  width: 50,
-                  child: TextButton(
+                  height: 50, // Set the height to adjust the button size
+                  child: ElevatedButton(
                     onPressed: () => _toggleBody(true, false),
-                    style: TextButton.styleFrom(
-                      padding: const EdgeInsets.fromLTRB(83, 25, 83, 25),
-                      backgroundColor:
-                          _showProjectBody ? enableColor : disableColor,
+                    style: ElevatedButton.styleFrom(
+                      primary: _showProjectBody ? enableColor : disableColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0.0),
+                      ),
                     ),
                     child: Text(
                       "Projects",
@@ -48,16 +46,15 @@ class _ProjectTaskState extends State<ProjectTask> {
                 ),
               ),
               Expanded(
-                flex: 2,
                 child: Container(
-                  alignment: Alignment.center,
-                  width: 50,
-                  child: TextButton(
+                  height: 50, // Set the height to adjust the button size
+                  child: ElevatedButton(
                     onPressed: () => _toggleBody(false, true),
-                    style: TextButton.styleFrom(
-                      padding: const EdgeInsets.fromLTRB(95, 25, 97, 25),
-                      backgroundColor:
-                          _showProjectBody ? disableColor : enableColor,
+                    style: ElevatedButton.styleFrom(
+                      primary: _showProjectBody ? disableColor : enableColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0.0),
+                      ),
                     ),
                     child: Text(
                       "Tasks",
@@ -83,7 +80,6 @@ class _ProjectTaskState extends State<ProjectTask> {
   void _toggleBody(bool showProjectBody, bool showTaskBody) {
     setState(() {
       _showProjectBody = showProjectBody;
-      _showTaskBody = showTaskBody;
     });
   }
 }

@@ -1,9 +1,9 @@
-import 'package:emp_management_system/Colors_Fonts/fonts/fonts.dart';
+import 'package:emp_management_system/Colors_Fonts/Fonts/font.dart';
 import 'package:emp_management_system/EmployeeProjectAndTask/AppBar.dart';
 import 'package:flutter/material.dart';
 
-import '../Hamburger.dart';
-import 'InProressItems.dart';
+import '../drawer_button.dart';
+import 'in_process-item.dart';
 
 class ViewInProgressProjects extends StatefulWidget {
   final List<String> inProgressProjects;

@@ -1,7 +1,6 @@
-import 'package:emp_management_system/Colors_Fonts/fonts/fonts.dart';
-import 'package:emp_management_system/EmployeeProjectAndTask/Project/SingleInProcessItem.dart';
+import 'package:emp_management_system/Colors_Fonts/Fonts/font.dart';
+import 'package:emp_management_system/EmployeeProjectAndTask/Project/single_in_process_item.dart';
 import 'package:flutter/material.dart';
-
 import '../../CircularImage/CircularImageProfile.dart';
 
 class InProcessItems extends StatefulWidget {
@@ -23,7 +22,6 @@ class InProcessItems extends StatefulWidget {
 
 class _InProcessItemsState extends State<InProcessItems> {
   bool expanded = false;
-  SingleInProcessItem singleInProcessItem = SingleInProcessItem();
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +65,10 @@ class _InProcessItemsState extends State<InProcessItems> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        SingleInProcessItem()))
+                                                        SingleInProcessItem(
+                                                            widget.title,
+                                                            widget
+                                                                .description)))
                                           },
                                       hoverColor: Colors.transparent,
                                       icon:
